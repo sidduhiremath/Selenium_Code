@@ -38,7 +38,7 @@ public class MortgageCalculator {
 //		Thread.sleep(3000);
 		
 		// Google Search
-//		d.get("http://www.googl.com/");
+//		d.get("http://www.google.com/");
 //		d.findElement(By.xpath("//input[@name='q']")).sendKeys("Selenium");
 //		Thread.sleep(2000);
 //		d.findElement(By.xpath("//input[@class='gNO89b']")).click();
@@ -66,7 +66,7 @@ public class MortgageCalculator {
 		Thread.sleep(3000);
 		d.findElement(By.id("nav-search-submit-button")).click();
 		Thread.sleep(3000);
-		d.findElement(By.xpath("//*[@id=\"p_n_availability/1318485031\"]/span/a/span")).click();
+		d.findElement(By.xpath("//*[@id=\"p_n_is_cod_eligible/4931671031\"]/span/a/span")).click();
 		if(d.findElement(By.xpath("//*[@id=\"p_n_availability/1318485031\"]/span/a/span")).isEnabled()) {
 			System.out.println("Selected");
 			}
