@@ -21,6 +21,7 @@ public class Youcandealwithit {
 		Thread.sleep(2000);
 		String totalMonthlyExpenses= d.findElement(By.id("totalMonthlyExpenses")).getAttribute("value");
 		String totalMonthlyIncome= d.findElement(By.id("totalMonthlyIncome")).getText();
+//		d.navigate().back();
 		System.out.println(totalMonthlyExpenses);
 		try {
 		 a=Integer.valueOf(totalMonthlyExpenses);
@@ -36,7 +37,7 @@ public class Youcandealwithit {
 			System.out.println("Income is High..");
 			}
 		 Thread.sleep(3000);
-//		 d.close();
+		 d.close();
 		}
 
 }

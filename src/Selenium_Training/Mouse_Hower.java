@@ -6,17 +6,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class Mouse_Hower {
-
+	public static WebDriver d;
 	public static void main(String[] args) throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver","C:\\Users\\00005110\\OneDrive - Arisglobal software pvt Ltd\\Desktop\\Selenium Components\\chrome\\chromedriver.exe");
-		WebDriver d=new ChromeDriver();
+		d=new ChromeDriver();
 		d.manage().window().maximize();
 		d.get("https://www.amazon.in/");
 		Thread.sleep(3000);
 		Actions mouse=new Actions(d);
 //		mouse.moveToElement(d.findElement(By.xpath("//*[@id=\"nav-link-accountList\"]/span"))).build().perform();
 		mouse.moveToElement(d.findElement(By.partialLinkText("Account & Lists"))).build().perform();
-		
+//		String s="f";
+//		if(s.equals("")) {
+//			System.out.println("yes");
+//		}
+//		System.out.println("done");
 
 	
 		Thread.sleep(2000);
@@ -24,5 +28,7 @@ public class Mouse_Hower {
 		Thread.sleep(2000);
 		d.close();
 	}
+
+
 
 }

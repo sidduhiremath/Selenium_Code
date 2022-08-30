@@ -1,6 +1,5 @@
 package Selenium_Training;
 
-import java.util.Iterator;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -29,7 +28,7 @@ public class Window_handling {
 			}
 			
 		}
-//		driver.switchTo().alert().accept();
+		driver.switchTo().alert().accept();
 		driver.switchTo().window(parent);
 		Thread.sleep(2000);
 		Actions recr=new Actions(driver);
