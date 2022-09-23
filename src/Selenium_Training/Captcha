@@ -1,0 +1,71 @@
+package com.Capcha.Capcha;
+
+import java.io.File;
+
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
+
+public class test {
+
+	public void ConvertCaptcha(File f) {
+		 {
+		        Tesseract tesseract = new Tesseract();
+		        try {
+		  
+		            tesseract.setDatapath("C:\\Users\\00005110\\OneDrive - Arisglobal software pvt Ltd\\Desktop\\Selenium Components\\Tess4J-3.4.8-src\\Tess4J\\tessdata");
+		  
+		            // the path of your tess data folder
+		            // inside the extracted file
+		            String text = tesseract.doOCR(new File("C:\\EasyDocs\\EasyDocs 2022.2.1.0\\Logins.png"));
+
+//		            String text = tesseract.doOCR(new File("C:\\EasyDocs\\EasyDocs 2022.2.1.0\\Captcha.png"));
+//		            String text = tesseract.doOCR(new File("C:\\Users\\00005110\\OneDrive - Arisglobal software pvt Ltd\\SUSAR_Automation_Reports\\11-FEB-2022\\Reports\\Evidence\\TC11_LifeSphere_SUSAR_Reporting_OQ_EU_Annex_11\\ElementScreenshots\\Captcha.png"));
+		            // path of your image file
+		            System.out.print(text);
+		            System.out.println("Yes");
+		        }
+		        catch (TesseractException e) {
+		            e.printStackTrace();
+		        }
+	}
+
+	}}
+package com.Capcha.Capcha;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class PartialScreenshot {
+public static void main(String args[]) throws IOException {
+	WebDriver driver=new ChromeDriver();
+	File f=new File("C:\\EasyDocs\\EasyDocs 2022.2.1.0\\Login.png");
+	System.getProperty("webdriver.chrome.driver", "C:\\Users\\00005110\\OneDrive - Arisglobal software pvt Ltd\\Desktop\\Selenium Components\\Chrome\\chromedriver.exe");
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	driver.get("https://tin.tin.nsdl.com/pantan/StatusTrack.html");
+	File screen=((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	WebElement ele=driver.findElement(By.id("imgCode"));
+	Point p=ele.getLocation();
+	int w=ele.getSize().getWidth();
+	int h=ele.getSize().getHeight();
+	BufferedImage img=ImageIO.read(screen);
+	BufferedImage dest=img.getSubimage(p.getX(), p.getY(), w, h);
+	ImageIO.write(dest, "png", screen);
+	FileUtils.copyFile(screen, f);
+	System.out.println("Captcha converted into Image");
+//	test.ConvertCaptcha(f);
+}
+}
